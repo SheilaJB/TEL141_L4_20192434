@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# ============================================================
 # init_master.sh
 #
 # Parámetros:
@@ -14,10 +13,8 @@
 #   - Conectar las interfaces indicadas a br-int.
 #   - Activar IPv4 forwarding.
 #   - Configurar política FORWARD por defecto en DROP.
-# ============================================================
 
-# por si falla el bash 
-set -e
+set -e # por si falla el bash 
 
 BRIDGE="br-int"
 

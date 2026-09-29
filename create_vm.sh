@@ -1,19 +1,25 @@
 #!/bin/bash
 
-# ============================================================
-# no_routing_networks.sh
+# create_vm.sh
 #
 # Parámetros:
-#   $1 VLAN ID 1
-#   $2 VLAN ID 2
+#   $1 Nombre de la VM
+#   $2 Nombre del bridge OVS
+#   $3 VLAN ID
+#   $4 Display o puerto VNC
 #
 # Comando:
-#   bash no_routing_networks.sh <VLAN_ID_1> <VLAN_ID_2>
+#   bash create_vm.sh <VM_NAME> <OVS_NAME> <VLAN_ID> <VNC>
 #
 # Funciones:
-#   - Deshabilitar comunicación entre dos VLAN.
-#   - Eliminar las reglas FORWARD en ambos sentidos.
-# ============================================================
+#   - Verificar la existencia del bridge OVS.
+#   - Descargar la imagen base CirrOS si no existe.
+#   - Crear un disco QCOW2 diferencial para la VM.
+#   - Crear una interfaz TAP y conectarla al OVS.
+#   - Asociar la TAP a la VLAN indicada.
+#   - Generar una dirección MAC para la VM.
+#   - Iniciar la VM mediante QEMU/KVM.
+#   - Configurar el acceso VNC y almacenar el PID del proceso.
 
 set -e
 
